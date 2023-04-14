@@ -27,9 +27,16 @@ Public Class frmMain
             For intEven As Integer = 0 To 10 Step 2
                 Integer.TryParse(strIsbn(intEven), intDigit)
             Next intEven
+
+            intGrandTotal = intTotalOdd + intTotalEven
+            intRemainder = intGrandTotal Mod 10
+
             If intRemainder <> 0 Then
                 intCheckDigit = 10 - intRemainder
             End If
+
+            lblFinalIsbn.Text = strIsbn & intCheckDigit.ToString
+
         Else
             MessageBox.Show("Please enter 12 numbers.", "Check Digit",
                             MessageBoxButtons.OK, MessageBoxIcon.Information)
